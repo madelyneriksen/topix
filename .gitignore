@@ -1,0 +1,13 @@
+# Virtual environment
+.env
+.vim
+# Python Bytecode
+__pycache__
+# Coverage Results
+.coverage
+# Packaging Components
+*.egg-info
+.eggs/
+build/
+dist/
+.mypy_cache/

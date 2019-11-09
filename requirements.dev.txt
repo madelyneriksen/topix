@@ -1,0 +1,5 @@
+pytest>=5.2.0
+pytest-cov>=2.7.1
+mypy>=0.730
+black>=19.3b0
+-r requirements.txt
