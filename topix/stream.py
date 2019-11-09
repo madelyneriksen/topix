@@ -30,6 +30,9 @@ StreamData = t.Dict[bytes, bytes]
 StreamEntry = t.Tuple[bytes, StreamData]
 
 
+log = logging.getLogger(__name__)
+
+
 def _trim(x: t.List[t.Tuple[t.Any, T]]) -> T:
     """Removes extranneous data from Redis xreadgroup."""
     return x[0][1]
@@ -39,12 +42,14 @@ def _setup(stream: str, group: str) -> None:
     """Setup a stream with a consumer group on Redis."""
     try:
         connection().xgroup_create(stream, group, mkstream=True)  # type: ignore
+        log.info("Created group=%s in stream=%s", group, stream)
     except redis.exceptions.ResponseError:
         pass
 
 
 def _teardown(stream: str, group: str, consumer: str) -> None:
     """Teardown a consumer in the group and stream."""
+    log.warning("Removing consumer=%s from group=%s on stream=%s", consumer, group, stream)
     connection().xgroup_delconsumer(stream, group, consumer)  # type: ignore
 
 

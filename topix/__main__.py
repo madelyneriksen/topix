@@ -2,11 +2,13 @@
 
 
 import typing as t
-import json
-import sys
-import importlib
 
 import argparse
+import importlib
+import logging
+import json
+import sys
+
 
 from topix.emitter import emit, CastType
 from topix.stream import stream_into
@@ -45,6 +47,12 @@ def _create_parsers() -> argparse.ArgumentParser:
     """Create a parser for the program."""
     parser = argparse.ArgumentParser(description=main.__doc__, prog="topix")
 
+    # Global pieces, like logging configuration.
+    parser.add_argument(
+        "--log-format", default="%(levelname)s | %(name)s | %(asctime)s | %(message)s"
+    )
+    parser.add_argument("--log-level", default="INFO")
+
     subparsers = parser.add_subparsers()
 
     emit_parser = subparsers.add_parser("emitter", help=emitter.__doc__)
@@ -80,6 +88,7 @@ def main(raw_arguments: t.List[str]) -> None:
     """
     parser = _create_parsers()
     args = parser.parse_args(raw_arguments)
+    logging.basicConfig(format=args.log_format, level=args.log_level)
     args.func(**vars(args))
 
 
