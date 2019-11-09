@@ -44,7 +44,7 @@ def _setup(stream: str, group: str) -> None:
         connection().xgroup_create(stream, group, mkstream=True)  # type: ignore
         log.info("Created group=%s in stream=%s", group, stream)
     except redis.exceptions.ResponseError:
-        pass
+        log.info("Already created group=%s in stream=%s", group, stream)
 
 
 def _teardown(stream: str, group: str, consumer: str) -> None:
@@ -90,7 +90,6 @@ def stream_into(
     """
     consumer = consumer or guid()
     client = connection()
-    _setup(stream, group)
 
     # Functions to interact with Redis
     read = p(client.xreadgroup, group, consumer, {stream: ">"}, block=0)
