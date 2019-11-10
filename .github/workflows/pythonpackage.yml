@@ -24,3 +24,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Type Checking
+      run: |
+        mypy --strict topix
+    - name: Codestyle
+      run: |
+        black --check topix
