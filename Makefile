@@ -5,6 +5,7 @@ VERSION=$(shell cat VERSION)
 build: test dist/topix-${VERSION}.tar.gz
 
 dist/topix-${VERSION}.tar.gz: .env/bin/activate
+	rm -rf dist/*
 	python setup.py sdist bdist_wheel
 
 test:
