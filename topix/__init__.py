@@ -7,5 +7,7 @@ a functional programming style in Python.
 
 import logging
 
+from .emitter import emit
+from .stream import stream_into
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())
