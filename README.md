@@ -149,3 +149,7 @@ Topix checks types with MyPy. Type check your code like this:
 ```bash
 mypy topix
 ```
+
+## License
+
+Copyright 2019 by Madelyn Eriksen under the terms of the MIT License. See [license](/LICENSE) for full terms.
