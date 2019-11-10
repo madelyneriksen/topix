@@ -104,7 +104,7 @@ Topix's `emit` is a _thin_ wrapper around Redis' `XADD` command, and maps the va
 Typically, you'll want to emit events to your code using `emit` (or `xadd`) programmatically, but for demos (or `bash` scripts), Topix includes a subcommand to send messages to a stream:
 
 ```bash
-python -m topix emit stream_name '{"hello": "world"}'
+python -m topix emitter stream_name '{"hello": "world"}'
 ```
 
 ### Additional Configuration
