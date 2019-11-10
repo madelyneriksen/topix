@@ -4,10 +4,11 @@
 import typing as t
 
 import argparse
-import importlib
 import logging
 import json
 import sys
+
+from importlib import import_module
 
 
 from topix.emitter import emit, CastType
@@ -17,12 +18,8 @@ from topix.stream import stream_into
 # I am not even going to pretend this is typesafe...
 def import_from(path: str) -> t.Any:
     """Import something from a python path."""
-    split = path.split(".")
-    # The name of the function
-    last = split[-1]
-    # The module.
-    mod = importlib.import_module(".".join(split[:-1]))
-    return getattr(mod, last)
+    module, item = path.split(":")
+    return getattr(import_module(module), item)
 
 
 def emitter(stream: str, mapping: t.Dict[CastType, CastType], **_: t.Any) -> None:
@@ -74,6 +71,9 @@ def _create_parsers() -> argparse.ArgumentParser:
     )
     consume_parser.add_argument(
         "--consumer", type=str, help="Unique identifier for this consumer."
+    )
+    consume_parser.add_argument(
+        "--concurrency", type=int, help="Number of threads to run the function with."
     )
     consume_parser.set_defaults(func=consumer)
 
