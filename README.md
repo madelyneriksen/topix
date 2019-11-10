@@ -1,6 +1,10 @@
 Topix
 =======
 
+[![PyPI](https://img.shields.io/pypi/v/topix)](https://pypi.org/project/topix/)
+[![License](https://img.shields.io/pypi/l/topix)](/LICENSE)
+[![Code Style: Black](https://img.shields.io/badge/Code%20Style-Black-black)](https://black.readthedocs.io/en/stable/)
+
 A functional microframework to use Redis streams in Python.
 
 ## Quickstart 🚀
