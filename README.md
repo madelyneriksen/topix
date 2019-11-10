@@ -137,7 +137,7 @@ pip install -r requirements.dev.txt
 python setup.py develop
 ```
 
-Tests are provided by Pytest. Plugins for `pylint` and `coverage` are directly integrated:
+Tests are provided by Pytest. A plugin for `coverage` is directly integrated:
 
 ```bash
 pytest # or python setup.py test
@@ -153,7 +153,7 @@ Coverage Report:
 Topix checks types with MyPy. Type check your code like this:
 
 ```bash
-mypy topix
+mypy --strict topix
 ```
 
 ## License
