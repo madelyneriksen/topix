@@ -26,8 +26,7 @@ B = t.TypeVar("B")
 def connection() -> redis.Redis:
     """Creates a singleton Redis client."""
     # Allow configuration of what env var to use.
-    key = os.getenv("TOPIX_REDIS_URL_ENV_VAR", "TOPIX_REDIS_URL")
-    url = os.getenv(key, "redis://localhost:6379/0")
+    url = os.getenv("TOPIX_REDIS_URL", "redis://localhost:6379/0")
     return redis.Redis.from_url(url)
 
 

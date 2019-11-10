@@ -49,7 +49,9 @@ def _setup(stream: str, group: str) -> None:
 
 def _teardown(stream: str, group: str, consumer: str) -> None:
     """Teardown a consumer in the group and stream."""
-    log.warning("Removing consumer=%s from group=%s on stream=%s", consumer, group, stream)
+    log.warning(
+        "Removing consumer=%s from group=%s on stream=%s", consumer, group, stream
+    )
     connection().xgroup_delconsumer(stream, group, consumer)  # type: ignore
 
 
