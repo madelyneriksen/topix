@@ -15,7 +15,7 @@ setuptools.setup(
     name="topix",
     version=VERSION,
     author="Madelyn Eriksen",
-    author_email="hello@madelyneriksen.com",
+    author_email="opensource@madelyneriksen.com",
     description="Topix is a functional microframework for working with Redis streams.",
     long_description=DESC,
     long_description_content_type="text/markdown",
