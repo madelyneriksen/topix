@@ -50,6 +50,8 @@ I created Topix with a few primary goals and concepts:
 * Small abstraction over the fantastic Redis Streams.
 * Implementation of Topix should favor simple code over new features.
 
+If you need heavy-duty task queues, advanced messaging systems, or want an opinionated framework with a "right way" to do things, Topix isn't for you. However, if you want a simple API you can easily manage and build your own abstractions on top of, Topix might be for you.
+
 ## Usage
 
 Topix centers around two concepts: _consumers_, implemented as functions, and _emitters_, that call `topix.emit` or `redis.xadd`.
