@@ -1,7 +1,7 @@
 Topix
 =======
 
-A functional microframework to use Redis streams as infinite generators in Python.
+A functional microframework to use Redis streams in Python.
 
 ## Quickstart 🚀
 
